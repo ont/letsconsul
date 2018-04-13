@@ -1,0 +1,12 @@
+# vim: ts=2:sts=2:sw=2:expandtab:smarttab:
+
+pipeline:
+  publish-docker:
+    image: plugins/docker
+    repo: ontrif/letsconsul
+    tag:
+      - latest
+      - ${DRONE_TAG}
+    when:
+      event: tag
+    secrets: [ docker_username, docker_password ]
